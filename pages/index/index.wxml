@@ -1,0 +1,71 @@
+<!--index.wxml-->
+<view class="index">
+    <view class="slider">
+        <swiper class="swiper" indicator-dots="{{indicatorDots}}"
+  autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{swipers}}" wx:key="item">
+                <swiper-item>
+                    <navigator url="{{item.adver_url}}" class="widget">
+                        <image mode="widthFix" src="{{item.adver_image}}" class="slide-image" width="" height=""></image>
+                    </navigator>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+<view class="home_notice">
+<image class="home_notice_image" src="/images/phone.png" mode="widthFix" />微信小程序外包开发优惠热线：15914283683
+</view>
+
+      <!-- 内容栏目  -->
+  <view class="m-menu">
+    <navigator class="item" url="{{item.target}}" wx:for="{{channel}}" wx:key="id">
+      <image src="{{item.iconUrl}}" background-size="cover"></image>
+      <text>{{item.name}}</text>
+    </navigator>
+  </view>
+
+    <view class="news">
+        <text class="news-title">最新动态</text>
+
+        <block wx:for="{{news}}" wx:key="key">
+        <navigator url="/pages/news/news-details?id={{item.id}}">
+        <view class="news-item line">
+            <view class="news-item-pic">
+                <image mode="widthFix" src="{{item.news_thumbnail}}" class="news-item-image" width="" height=""></image>
+            </view>
+            <view class="news-item-words">
+                <view class="news-item-title"><text>{{item.news_title}}</text></view>
+                <view class="news-item-content"><text>{{item.news_sub_title}}</text></view>
+            </view>
+        </view>
+        </navigator>
+        </block>
+
+        <view class="widgets__list widgets__list_show">
+            <navigator url="/pages/news/news" class="widget_more">
+                <text class="news-more">查看更多</text>
+                <image class="widget__arrow" src="/images/arrowright.png" mode="aspectFill" />
+                <view class="widget__line widget__line_first"></view>
+            </navigator>
+        </view>
+    </view>
+
+
+
+  <view class="myHome">
+    <view class="myHome__box">
+      <image src="http://cdn7.okayapi.com/yesyesapi_20191205110809_08ae69277e63ad6c1110ce8c1da283f5.png" mode="widthFix"   />
+    </view>
+    <view class="myHome__box">
+      <image src="http://cdn7.okayapi.com/yesyesapi_20191205110809_08ae69277e63ad6c1110ce8c1da283f5.png" mode="widthFix"   />
+    </view>
+    <view class="myHome__box">
+      <image src="http://cdn7.okayapi.com/yesyesapi_20191205110809_08ae69277e63ad6c1110ce8c1da283f5.png" mode="widthFix"   />
+    </view>
+    <view class="myHome__box">
+      <image src="http://cdn7.okayapi.com/yesyesapi_20191205110809_08ae69277e63ad6c1110ce8c1da283f5.png" mode="widthFix"   />
+    </view>
+  </view>
+
+</view>

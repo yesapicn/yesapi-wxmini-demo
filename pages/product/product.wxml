@@ -1,0 +1,23 @@
+<view class=" container">
+  <scroll-view class="groupon-list" scroll-y="true" scroll-top="{{scrollTop}}">
+
+    <view class="item" wx:for="{{goodsList}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+      <navigator url="/pages/goods/goods?id={{item.id}}">
+        <image class="img" src="{{item.goods_img}}" background-size="cover"></image>
+        <view class="right">
+          <view class="text">
+            <view class="header">
+              <text class="name">{{item.goods_name}}</text>
+            </view>
+            <text class="desc">{{item.goods_desc}}</text>
+            <view class="price">
+              <view class="counterPrice">市场价：￥{{item.goods_maket_price}}</view>
+              <view class="retailPrice">专享价：￥{{item.goods_price}}</view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+
+  </scroll-view>
+</view>
