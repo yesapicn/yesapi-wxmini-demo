@@ -14,14 +14,14 @@
     </view>
 
 <view class="home_notice">
-<image class="home_notice_image" src="/images/phone.png" mode="widthFix" />微信小程序外包开发优惠热线：15914283683
+<image class="home_notice_image" src="/images/phone.png" mode="widthFix" />{{notice_title}}
 </view>
 
-      <!-- 内容栏目  -->
+      <!-- 功能栏目  -->
   <view class="m-menu">
-    <navigator class="item" url="{{item.target}}" wx:for="{{channel}}" wx:key="id">
-      <image src="{{item.iconUrl}}" background-size="cover"></image>
-      <text>{{item.name}}</text>
+    <navigator class="item" url="{{item.jump_url}}" wx:for="{{menus}}" wx:key="id">
+      <image src="{{item.menu_icon}}" background-size="cover"></image>
+      <text>{{item.menu_title}}</text>
     </navigator>
   </view>
 
@@ -32,11 +32,11 @@
         <navigator url="/pages/news/news-details?id={{item.id}}">
         <view class="news-item line">
             <view class="news-item-pic">
-                <image mode="widthFix" src="{{item.news_thumbnail}}" class="news-item-image" width="" height=""></image>
+                <image mode="widthFix" src="{{item.image}}" class="news-item-image" width="" height=""></image>
             </view>
             <view class="news-item-words">
-                <view class="news-item-title"><text>{{item.news_title}}</text></view>
-                <view class="news-item-content"><text>{{item.news_sub_title}}</text></view>
+                <view class="news-item-title"><text>{{item.title}}</text></view>
+                <view class="news-item-content"><text>{{item.zhaiyao}}</text></view>
             </view>
         </view>
         </navigator>

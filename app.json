@@ -22,19 +22,25 @@
         "pagePath": "pages/index/index",
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index_selected.png",
-        "text": "企业介绍"
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/news/news",
+        "iconPath": "images/product.png",
+        "selectedIconPath": "images/product_selected.png",
+        "text": "内容"
       },
       {
         "pagePath": "pages/product/product",
         "iconPath": "images/product.png",
         "selectedIconPath": "images/product_selected.png",
-        "text": "产品服务"
+        "text": "店铺"
       },
       {
         "pagePath": "pages/contact/contact",
         "iconPath": "images/contact.png",
         "selectedIconPath": "images/contact_selected.png",
-        "text": "联系我们"
+        "text": "我的"
       }
     ]
   },

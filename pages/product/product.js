@@ -1,3 +1,4 @@
+import yesapi from '../../utils/YesApi/yesapi.js';
 
 Page({
   data: {
@@ -10,6 +11,22 @@ Page({
   },
   onLoad: function () {
     var that = this;
+
+    let params = {
+      //cate_id: 0,
+      //brand_id: 0,
+      //keyword: '',
+      //is_new: 1,
+      //is_hot: 1,
+      page: that.data.page,
+      perpage: that.data.limit,
+      sort: 'add_time',
+      order: 'desc'
+    }
+
+    yesapi.requestAppWxmini_GoodsSearchList(params, function (res) {
+      that.setData({ goodsList: res.data.list})
+    })
 
   },
   onReady:function(){

@@ -83,12 +83,13 @@ page, .container {
 
 .groupon-list .counterPrice {
   text-decoration: line-through;
+  margin-left: 10rpx;
   font-size: 28rpx;
   color: #999;
 }
 
 .groupon-list .retailPrice {
-  margin-left: 30rpx;
+  margin-left: 0rpx;
   font-size: 28rpx;
   color: #a78845;
 }

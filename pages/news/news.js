@@ -1,3 +1,4 @@
+import yesapi from '../../utils/YesApi/yesapi.js';
 
 Page({
   data:{
@@ -7,22 +8,9 @@ Page({
   },
   onLoad: function () {
     var that = this;
-    wx.request({
-      url: CONFIG.API_URL.GET_INDEX + "&s=App.Market_LastestNews.GetList&perpage=" + that.data.perpage + "&page=" + that.data.page,
-      method: 'GET',
-      data: {},
-      header: {
-        'Accept': 'application/json'
-      },
-      success: function(res) {
-        if (res.statusCode == 200 && res.data.ret == 200) {
-          if (res.statusCode == 200 && res.data.ret == 200) {
-            that.setData({ news: res.data.data.list });
-          }
-        } else {
-          
-        }
-      }
+    // 最新动态
+    yesapi.requestAppWxmini_CmsGetArticleList(null, that.data.page, that.data.perpage, function (res) {
+      that.setData({ news: res.data.items })
     })
   },
   onReady:function(){

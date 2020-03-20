@@ -9,52 +9,39 @@ Page({
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    swipers: [],
-    news: [],
+    swipers: [{
+      id: 0,
+      adver_image: 'http://cdn7.okayapi.com/yesyesapi_20191022182350_ee3b14448d62aae9736ebd0050dee1cd.png',
+      adver_url: '',
+    }],
+    notice_title: '优惠服务热线：1388888888',
+    news: [
+      {
+        id: 1,
+        title: "果创云商城上线啦！",
+        "image": "http://cd7.yesapi.net/F9B20374B4CBD344913900A437BA56A2_20200225230943_f56800c6c233a1e4645da6d76ec9a730.png",
+        zhaiyao: "轻松开店，在线当老板！"
+      }
+    ],
     cat: '17',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    channel: [
+    menus: [
       {
-        target: "/pages/index/index",
-        iconUrl: "/images/menu/shouji.png",
-        name: "小白免费API"
+        jump_url: "/pages/index/index",
+        menu_icon: "/images/menu/shouji.png",
+        menu_title: "小白免费API"
       },
       {
-        target: "/pages/index/index",
-        iconUrl: "/images/menu/shujubaobiao.png",
-        name: "小白开放平台"
+        jump_url: "/pages/index/index",
+        menu_icon: "/images/menu/shujubaobiao.png",
+        menu_title: "小白开放平台"
       },
       {
-        target: "/pages/index/index",
-        iconUrl: "/images/menu/xiangmu.png",
-        name: "数据存储"
-      },
-      {
-        target: "/pages/index/index",
-        iconUrl: "/images/menu/tupian.png",
-        name: "图片存储"
-      },
-      {
-        target: "/pages/index/index",
-        iconUrl: "/images/menu/yonghu.png",
-        name: "会员体系"
-      },
-      {
-        target: "/pages/index/index",
-        iconUrl: "/images/menu/gongwenbao.png",
-        name: "SaaS服务"
-      },
-      {
-        target: "/pages/index/index",
-        iconUrl: "/images/menu/xinxing.png",
-        name: "定制开发"
-      },
-      {
-        target: "/pages/index/index",
-        iconUrl: "/images/menu/shouji.png",
-        name: "小程序开发"
+        jump_url: "/pages/index/index",
+        menu_icon: "/images/menu/xiangmu.png",
+        menu_title: "数据存储"
       }
     ]
   },
@@ -62,6 +49,27 @@ Page({
   onLoad: function () {
     var that = this;
 
+    // 轮播图
+    yesapi.requestAppWxmini_AdverGetAdList(10, function (res) {
+        that.setData({swipers: res.data.items})
+    })
+
+    // 公告
+    yesapi.requestAppWxmini_NoticeGetList(1, function (res) {
+      that.setData({ notice_title: res.data.items[0]['notice_title'] })
+    })
+
+    // 菜单
+    yesapi.requestAppWxmini_MenusGetList(10, function(res) {
+      that.setData({ menus: res.data.items})
+    })
+
+    // 最新动态
+    yesapi.requestAppWxmini_CmsGetArticleList(null, 1, 3, function (res) {
+      that.setData({ news: res.data.items })
+    })
+
+    // 测试
     yesapi.requestAppHelloWorld('Demo', function(res) {
       console.log('如果你看到这句话，说明小白接口请求成功啦~', res)
     }, function (res) {
@@ -111,6 +119,7 @@ Page({
 
               // 存全局
               app.globalData.userInfo = res.userInfo
+              app.globalData.openid = res.userInfo.openid
 
               that.onLogin(res.iv, res.encryptedData)
             }
