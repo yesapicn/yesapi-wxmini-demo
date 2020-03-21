@@ -82,9 +82,27 @@ Page({
     // 上传文件
     // this.chooseFileAndUpload()
 
+    // 创建订单
+    // this.createNewOrder()
+
     // 登录
     this.goGetUserInfo()
 
+  },
+  createNewOrder: function() {
+    let trade_type = 'CASH', 
+      body = '测试商品', 
+      total_fee = 1, 
+      openid = 'oes0R5asoorPZSLFyOBom1RrajnM', 
+      params = {
+        customer_username: '张三',
+        customer_mobile: '13800000000',
+        customer_address: '广东广州天河',
+      }
+    
+      yesapi.requestAppWxmini_PayCreateOrde(trade_type, body, total_fee, openid, params, function (res) {
+        console.log('创建订单：', res)
+      })
   },
   chooseImageAndUpload: function () {
     wx.chooseImage({
