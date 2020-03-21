@@ -76,9 +76,37 @@ Page({
       console.log('小白接口配置不正确，修改app.js配置文件：', res)
     })
 
+    // 上传图片
+    // this.chooseImageAndUpload()
+
+    // 上传文件
+    // this.chooseFileAndUpload()
+
     // 登录
     this.goGetUserInfo()
 
+  },
+  chooseImageAndUpload: function () {
+    wx.chooseImage({
+      count: 1,
+      success: function (res) {
+        yesapi.requestAppCDNUploadImg(res.tempFilePaths[0], function (res) {
+          console.log('图片上传完毕：', res);
+        })
+      }
+    })
+  },
+
+  chooseFileAndUpload: function () {
+    wx.chooseMessageFile({
+      count: 1,
+      success: function (res) {
+        console.log('选择的文件：', res)
+        yesapi.requestAppCDNUploadOffice(res.tempFiles[0].path, function (res) {
+          console.log('文件上传完毕：', res);
+        })
+      }
+    })
   },
   onShareAppMessage: function () {
    // return custom share data when user share.
