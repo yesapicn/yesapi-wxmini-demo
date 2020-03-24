@@ -4,6 +4,9 @@
 扫友体验：  
 ![](http://cdn7.okayapi.com/yesyesapi_20200321130420_e0f6538fe46e3c2ae1772c9204cd87df.png)
 
+[在线管理后台](http://open.yesapi.cn/wxmini/home)： 
+![](http://cdn7.okayapi.com/yesyesapi_20200324185551_0aa94197d64ac2adfd524723f5fdc14e.png)
+
 ## 下载
 将当前项目下载，然后使用微信开发者工具打开。修改```./app.js```文件，换成你的小白接口的域名等配置。  
 详细配置，请参考[yesapicn/yesapi-wxmini-sdk](https://github.com/yesapicn/yesapi-wxmini-sdk)。  
